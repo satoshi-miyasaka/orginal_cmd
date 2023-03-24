@@ -1,11 +1,13 @@
 @echo off
+set sub_path=%USERPROFILE%\orginal_cmd\sub\
 set old_path_number=%path_number%
 set path_number=0
 
 call :old_clear %old_path_number%
 set opts=
 set cmds=
-call C:\Users\miyac\cmd\sub\arg.bat %*
+
+call %sub_path%arg.bat %*
 set search=*%cmds%*
 for /f "delims=" %%i in ('dir /b%opts% %search%') do call :make_list "%%i"
 
@@ -23,7 +25,7 @@ call set path_%path_number%="%~f1"
 exit /b 0
 
 :old_clear
-for /l %%i in (1, 1, %2) do set %1_%%i=
+for /l %%i in (1, 1, %1) do set path_%%i=
 
 exit /b 0
 
