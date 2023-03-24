@@ -19,7 +19,7 @@ exit /b 0
 
 :make_list
 call set /a path_number=%path_number%+1
-call set path_%path_number%=%1
+call set path_%path_number%="%~f1"
 exit /b 0
 
 :old_clear
@@ -32,21 +32,24 @@ for /l %%i in (1, 1, %path_number%) do (call :path_echo %%i path_%%i)
 exit /b 0
 
 :path_echo
-call :path_echo2 %1 %%%2%%
+call :path_echo2 %1 %%%2%% "%cd%"
 exit /b 0
 
 :path_echo2
 set size=%~z2
 set tani=B
 set pad=
+set temp1=%~pnx2
+set temp2=%~pnx3\
+call set temp3=%%temp1:%temp2%=%%
 if defined size (if 1024 lss %size% set /a size=%size%/1024&set tani=K)
 if defined size (if 1024 lss %size% set /a size=%size%/1024&set tani=M)
 if defined size (if 1024 lss %size% set /a size=%size%/1024&set tani=G)
-if 1000 gtr %size% set pad=-
-if 100  gtr %size% set pad=--
-if 10   gtr %size% set pad=---
+if 1000 gtr %size% set pad= 
+if 100  gtr %size% set pad=  
+if 10   gtr %size% set pad=   
 
-echo %~ta2 %pad:-= %%size%%tani% [%1] %~2 
+echo %~ta2 %pad%%size%%tani% [%1] %temp3%
 
 set size=
 set tani=

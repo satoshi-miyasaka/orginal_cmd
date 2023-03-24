@@ -2,7 +2,7 @@
 
 set now_path=%cd%
 
-call C:\Users\miyac\cmd\sub\arg.bat %*
+call C:\Users\miyac\orginal_cmd\sub\arg.bat %*
 if DEFINED path_%cmds% call set cmds=%%path_%cmds%%%
 if - equ %cmds% set cmds=%before_path%
 if ~ equ %cmds% set cmds=%HOMEDRIVE%%HOMEPATH%
