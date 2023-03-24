@@ -20,7 +20,6 @@ if / equ %rep:~0,1% (set opts=%opts% %rep%&goto end)
 set cmds=%cmds% %rep%
 
 :end
-::set dq_flag=
 set arg=
 set rep=
 

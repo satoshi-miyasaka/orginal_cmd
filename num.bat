@@ -11,6 +11,10 @@ for /f "delims=" %%i in ('dir /b%opts% %search%') do call :make_list "%%i"
 
 call :path_display
 
+set opts=
+set cmds=
+set search=
+
 exit /b 0
 
 :make_list
@@ -43,8 +47,9 @@ if 100  gtr %size% set pad=--
 if 10   gtr %size% set pad=---
 
 echo %~ta2 %pad:-= %%size%%tani% [%1] %~2 
+
+set size=
+set tani=
+set pad=
+
 exit /b 0
-
-:arg_cnv
-
-
