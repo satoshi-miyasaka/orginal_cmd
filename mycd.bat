@@ -1,8 +1,8 @@
 @echo off
-set sub_path=%USERPROFILE%\orginal_cmd\sub\
+call %USERPROFILE%\set_env.bat
 set now_path=%cd%
 
-call %sub_path%arg.bat %*
+call %sub_path%\arg.bat %*
 if DEFINED path_%cmds% call set cmds=%%path_%cmds%%%
 if - equ %cmds% set cmds=%before_path%
 if ~ equ %cmds% set cmds=%HOMEDRIVE%%HOMEPATH%
